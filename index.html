@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Sports Event Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+/* BODY PROFESSIONAL SPORTS BACKGROUND */
+body{
+background:
+linear-gradient(rgba(10,15,30,0.85),rgba(10,15,30,0.85)),
+url("sportsbg.jpg");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+position:fixed;
+width:100%;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(15px);
+z-index:1000;
+box-shadow:0 0 15px rgba(0,255,255,0.3);
+}
+
+nav h2{
+font-family:'Orbitron',sans-serif;
+color:#00f7ff;
+letter-spacing:2px;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:35px;
+}
+
+nav ul li{
+cursor:pointer;
+transition:0.3s;
+font-weight:500;
+}
+
+nav ul li:hover{
+color:#00f7ff;
+}
+
+/* HERO SECTION */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:60px;
+font-family:'Orbitron',sans-serif;
+background:linear-gradient(90deg,#00f7ff,#ff00ff);
+-webkit-background-clip:text;
+color:transparent;
+margin-bottom:25px;
+}
+
+.hero p{
+font-size:20px;
+max-width:650px;
+margin-bottom:35px;
+color:#dcdcdc;
+}
+
+.hero button{
+padding:12px 35px;
+border:none;
+background:linear-gradient(90deg,#00f7ff,#ff00ff);
+color:white;
+font-size:16px;
+border-radius:30px;
+cursor:pointer;
+transition:0.4s;
+margin:5px;
+}
+
+.hero button:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px #00f7ff;
+}
+
+/* STATS SECTION */
+.stats{
+display:flex;
+justify-content:center;
+gap:80px;
+padding:80px 20px;
+text-align:center;
+}
+
+.stat{
+background:rgba(255,255,255,0.05);
+padding:30px 40px;
+border-radius:20px;
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.stat h2{
+font-size:45px;
+color:#00f7ff;
+}
+
+.stat p{
+font-size:18px;
+color:#ccc;
+}
+
+/* EVENTS SECTION */
+.events{
+padding:100px 50px;
+text-align:center;
+}
+
+.events h2{
+font-size:42px;
+margin-bottom:60px;
+font-family:'Orbitron';
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:40px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+border-radius:20px;
+padding:30px;
+backdrop-filter:blur(20px);
+transition:0.4s;
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 0 25px #00f7ff;
+}
+
+.card h3{
+margin-bottom:15px;
+color:#00f7ff;
+}
+
+.card button{
+margin-top:15px;
+padding:10px 25px;
+border:none;
+background:#ff00ff;
+color:white;
+border-radius:25px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card button:hover{
+box-shadow:0 0 15px #ff00ff;
+}
+
+/* MODAL */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:rgba(255,255,255,0.08);
+padding:35px;
+border-radius:20px;
+width:350px;
+text-align:center;
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,0.2);
+}
+
+.modal-content h3{
+margin-bottom:20px;
+color:#00f7ff;
+}
+
+.modal-content input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+outline:none;
+background:rgba(255,255,255,0.15);
+color:white;
+}
+
+.modal-content button{
+padding:10px 20px;
+border:none;
+background:#00f7ff;
+color:black;
+cursor:pointer;
+border-radius:20px;
+margin-top:10px;
+}
+
+.modal-content button:hover{
+box-shadow:0 0 15px #00f7ff;
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+background:rgba(0,0,0,0.6);
+margin-top:60px;
+color:#ccc;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero h1{font-size:38px;}
+.stats{flex-direction:column;}
+}
+
+#particles-js{
+position:fixed;
+width:100%;
+height:100%;
+z-index:-1;
+top:0;
+left:0;
+}
+
+body{
+background:linear-gradient(-45deg,#0f2027,#203a43,#2c5364,#000428);
+background-size:400% 400%;
+animation:gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+} 
+#loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#000;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
+color:white;
+}
+
+.spinner{
+width:60px;
+height:60px;
+border:6px solid #333;
+border-top:6px solid #00f7ff;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}  
+
+.icon{
+font-size:40px;
+margin-bottom:15px;
+color:#00f7ff;
+}
+
+nav{
+background:linear-gradient(90deg,#000000,#1a1a1a,#000000);
+box-shadow:0 0 20px #00f7ff;
+}
+
+.hero h1{
+text-shadow:0 0 20px #00f7ff;
+}
+
+</style>
+</head>
+
+<!-- ADMIN PANEL -->
+<div class="modal" id="adminModal">
+<div class="modal-content">
+<h3>Admin Login</h3>
+<input type="password" id="adminPassword" placeholder="Enter Password">
+<button onclick="adminLogin()">Login</button>
+<button onclick="closeAdmin()">Close</button>
+</div>
+</div>
+
+<body>
+
+<nav>
+<h2>Sports Management</h2>
+<ul>
+<li onclick="scrollToSection('home')">Home</li>
+<li onclick="scrollToSection('events')">Events</li>
+<li onclick="window.location.href='participants.html'">Participants</li>
+<li onclick="openAdmin()">Admin</li>
+<li onclick="scrollToSection('contact')">Contact Us</li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<h1>Ultimate Sports Event Platform</h1>
+<h2>Yashwantrao Chavan College, Koparkhairane</h2>
+<p>Organize, manage and participate in college and univercity tournaments with modern digital management.</p>
+<button onclick="scrollToSection('events')">Explore Events</button>
+</section>
+
+<section class="stats">
+<div class="stat">
+<h2 id="count1">0</h2>
+<p>Events</p>
+</div>
+<div class="stat">
+<h2 id="count2">0</h2>
+<p>Participants</p>
+</div>
+<div class="stat">
+<h2 id="count3">0</h2>
+<p>Organizers</p>
+</div>
+</section>
+
+<section class="events" id="events">
+<h2>Upcoming Events</h2>
+<div class="cards" id="eventCards"></div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+<div class="modal-content">
+<h3>Register Now</h3>
+<input type="text" id="name" placeholder="Your Name">
+<select id="department" required>
+    <option value="">Select Department</option>
+    <option value="IT">IT</option>
+    <option value="CS">CS</option>
+    <option value="BCom">BCom</option>
+    <option value="BA">BA</option>
+</select>
+<input type="text" id="className" placeholder="Class">
+<input type="text" id="contact" placeholder="Contact Number">
+<input type="text" id="email" placeholder="Email ID">
+<input type="date" id="dob" placeholder="Date of Birth">
+<input type="text" id="uid" placeholder="UID ">
+<button onclick="registerUser()">Submit</button>
+<button onclick="closeModal()">Close</button>
+</div>
+</div>
+
+<footer id="contact">
+© 2026 Elite Sports Event Management | TYBScIT Final Year Project | Developed by Yashwantrao Chavan College Students | Contact:9309378983
+</footer>
+
+<script>
+// Smooth scroll
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
+
+// Counter Animation
+function animateCounter(id, target){
+let count=0;
+let interval=setInterval(()=>{
+count+=Math.ceil(target/50);
+if(count>=target){
+count=target;
+clearInterval(interval);
+}
+document.getElementById(id).innerText=count;
+},40);
+}
+animateCounter("count1",10);
+animateCounter("count2",1200);
+animateCounter("count3",2);
+
+// Events
+const events=[
+"Football Championship",
+"Cricket Premier League",
+"Basketball Cup",
+"Badminton Open",
+"kabbadi Tournament",
+"Marathon 2026",
+"Relay Race",
+"Kho-Kho Championship",
+"Table Tennis Tournament",
+"Volleyball League "
+];
+
+const container=document.getElementById("eventCards");
+
+events.forEach(event=>{
+let card=document.createElement("div");
+card.classList.add("card");
+card.innerHTML=`
+<h3>${event}</h3>
+<p>Date: March 2026</p>
+<button onclick="openModal()">Register</button>
+`;
+container.appendChild(card);
+});
+
+// Modal
+function openModal(){
+document.getElementById("modal").style.display="flex";
+}
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+</script>
+
+</body>
+<!-- Loading Screen -->
+<div id="loader">
+  <div class="spinner"></div>
+  <h2>Loading Sports Platform...</h2>
+</div>
+<!-- Particles Background -->
+<div id="particles-js"></div>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+<script>
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 80 },
+    "size": { "value": 3 },
+    "color": { "value": "#00f7ff" },
+    "line_linked": {
+      "enable": true,
+      "color": "#ffffff"
+    },
+    "move": { "speed": 2 }
+  }
+});
+
+</script>
+</html>
+
+<script>
+    function registerUser() {
+
+    console.log("Register button clicked ✅");
+
+    // Get values
+    let name = document.getElementById("name").value.trim();
+    let department = document.getElementById("department").value.trim();
+    let className = document.getElementById("className").value.trim();
+    let contact = document.getElementById("contact").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let dob = document.getElementById("dob").value.trim();
+    let uid = document.getElementById("uid").value.trim();
+
+    // 🔴 VALIDATION
+    if (name === "" || department === "" || className === "" ||
+        contact === "" || email === "" || dob === "" || uid === "") {
+
+        alert("⚠ Please fill all fields!");
+        console.log("Validation Failed ❌");
+        return;
+    }
+
+    // Contact number validation (10 digits)
+    if (!/^[0-9]{10}$/.test(contact)) {
+        alert("⚠ Contact number must be 10 digits");
+        return;
+    }
+
+    // Email validation
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        alert("⚠ Invalid Email Format");
+        return;
+    }
+
+    console.log("Validation Passed ✅");
+
+    // Create object
+    let participant = {
+        name: name,
+        department: department,
+        className: className,
+        contact: contact,
+        email: email,
+        dob: dob,
+        uid: uid
+    };
+
+    // Get old data
+    let data = JSON.parse(localStorage.getItem("participants")) || [];
+
+    // Add new participant
+    data.push(participant);
+
+    // Save back to localStorage
+    localStorage.setItem("participants", JSON.stringify(data));
+
+    console.log("Data Saved Successfully 💾");
+
+    // Success animation effect
+    alert("🎉 Registration Successful!");
+
+    // Auto clear form
+    document.getElementById("name").value = "";
+    document.getElementById("department").value = "";
+    document.getElementById("className").value = "";
+    document.getElementById("contact").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("dob").value = "";
+    document.getElementById("uid").value = "";
+
+    // Close modal
+    closeModal();
+}
+</script>
+
+<script>
+// ===============================
+// ADMIN PANEL FUNCTIONS
+// ===============================
+
+// Open Admin Modal
+function openAdmin() {
+    const modal = document.getElementById("adminModal");
+
+    if (modal) {
+        modal.style.display = "flex";
+    } else {
+        console.error("adminModal not found in HTML");
+    }
+}
+
+// Close Admin Modal
+function closeAdmin() {
+    const modal = document.getElementById("adminModal");
+
+    if (modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Admin Login Validation
+function adminLogin() {
+    const passwordInput = document.getElementById("adminPassword");
+
+    if (!passwordInput) {
+        console.error("adminPassword input not found");
+        return;
+    }
+
+    let pass = passwordInput.value.trim();
+
+    if (pass === "admin123") {
+        alert("Admin Login Successful ✅");
+
+        closeAdmin();
+
+        // Redirect to admin page
+        window.location.href = "admin.html";
+
+    } else {
+        alert("Wrong Password ❌");
+    }
+}
+</script>   
+<script>
+    window.addEventListener("load", function(){
+document.getElementById("loader").style.display="none";
+});
+</script>
+<script>
+    window.addEventListener("load", function(){
+document.getElementById("loader").style.display="none";
+});
+</script>
